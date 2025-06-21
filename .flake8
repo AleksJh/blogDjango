@@ -9,4 +9,5 @@ exclude =
     build,
     dist,
     *.pyc
+    settings.py
 extend-ignore = E203, W503
