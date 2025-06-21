@@ -19,3 +19,4 @@ poetry run python manage.py runserver
 
 This requires an old version of Python. You can use "pyenv" for Linux, or "pyenv-win" for Windows
 to handle different versions of interpreter.
+DB file is added to the repository in presentation purposes.
