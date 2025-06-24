@@ -116,7 +116,16 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = "static/"
+STATIC_URL = "/static/"
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+]
+STATIC_ROOT = BASE_DIR / "staticfiles"
+
+# For development only - serves static files during development
+if DEBUG:
+    import mimetypes
+    mimetypes.add_type("text/css", ".css", True)
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
