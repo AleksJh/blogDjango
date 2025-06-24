@@ -7,7 +7,8 @@ class PublishedManager(models.Manager):
     def get_queryset(self):
         return super().get_queryset().filter(status=Post.Status.PUBLISHED)
 
-
+# When you inherit from models.Model, Django knows that Post is a model,
+# and treats it with its ORM-logic.
 class Post(models.Model):
 
     class Status(models.TextChoices):
