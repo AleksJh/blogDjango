@@ -11,7 +11,7 @@ class Post(models.Model):
 
     class Status(models.TextChoices):
         DRAFT = "DF", "Draft"
-        PUBLISHED = "PB", "Published"
+        Published = "PB", "Published"
 
     title = models.CharField(max_length=250)
     slug = models.SlugField(max_length=250)
