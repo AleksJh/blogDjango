@@ -1,4 +1,4 @@
-# from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
+from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.shortcuts import get_object_or_404, render
 from django.views.generic import ListView
 
@@ -10,6 +10,24 @@ class PostListView(ListView):
     context_object_name = "posts"
     paginate_by = 3
     template_name = "blog/post/list.html"
+
+    def paginate_queryset(self, queryset, page_size):
+        """
+        Override the method to handle pagination errors manually.
+        """
+        paginator = Paginator(queryset, page_size)
+        page = self.request.GET.get("page", 1)
+
+        try:
+            page_obj = paginator.page(page)
+        except PageNotAnInteger:
+            page_obj = paginator.page(1)
+        except EmptyPage:
+            page_obj = paginator.page(paginator.num_pages)
+
+        is_paginated = paginator.num_pages > 1
+
+        return (paginator, page_obj, page_obj.object_list, is_paginated)
 
 
 # def post_list(request):
