@@ -1,0 +1,28 @@
+import os
+from pathlib import Path
+
+import django
+from django.core.mail import send_mail
+from dotenv import load_dotenv
+
+# Set up Django environment
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "mysite.settings")
+django.setup()
+
+# Load environment variables
+BASE_DIR = Path(__file__).resolve().parent
+dotenv_path = BASE_DIR / ".env"
+load_dotenv(dotenv_path)
+
+# Send test email
+try:
+    send_mail(
+        subject="Test",
+        message="Test email from Django",
+        from_email="",
+        recipient_list=[""],
+        fail_silently=False,
+    )
+    print("Email sent successfully!")
+except Exception as e:
+    print(f"Failed to send email: {str(e)}")
