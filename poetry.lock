@@ -160,6 +160,21 @@ colors = ["colorama"]
 plugins = ["setuptools"]
 
 [[package]]
+name = "markdown"
+version = "3.4.1"
+description = "Python implementation of Markdown."
+optional = false
+python-versions = ">=3.7"
+groups = ["main"]
+files = [
+    {file = "Markdown-3.4.1-py3-none-any.whl", hash = "sha256:08fb8465cffd03d10b9dd34a5c3fea908e20391a2a90b88d66362cb05beed186"},
+    {file = "Markdown-3.4.1.tar.gz", hash = "sha256:3b809086bb6efad416156e00a0da66fe47618a5d6918dd688f53f40c8e4cfeff"},
+]
+
+[package.extras]
+testing = ["coverage", "pyyaml"]
+
+[[package]]
 name = "mccabe"
 version = "0.7.0"
 description = "McCabe checker, plugin for flake8"
@@ -345,4 +360,4 @@ files = [
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.10,<3.11"
-content-hash = "1eccfc7a7fd78d86702adc7a2365ea7cb7930cc363727cecebe75b7496a59ff2"
+content-hash = "6b8c7fae57e7a4f941fefe1f3c4e3e5df94ae713678b6f3fd2a0d2fe82518abb"
