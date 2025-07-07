@@ -31,10 +31,8 @@ try:
     send_mail(
         subject="Test",  # Email subject
         message="Test email from Django",  # Email body
-
         from_email="lernagorc90@gmail.com",  # Sender email (should match
-                                             # EMAIL_HOST_USER in .env)
-
+        # EMAIL_HOST_USER in .env)
         recipient_list=["aleksanjhangiryan@gmail.com"],  # List of recipients
         fail_silently=False,  # Raise exceptions on errors
     )
