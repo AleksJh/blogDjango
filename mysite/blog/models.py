@@ -6,15 +6,40 @@ from taggit.managers import TaggableManager
 
 
 class PublishedManager(models.Manager):
+    """
+    Custom manager for Post model that returns only published posts.
+
+    This manager filters the queryset to include only posts with a 'PUBLISHED' status.
+    """
+
     def get_queryset(self):
+        """
+        Override the default get_queryset method to filter for published posts only.
+
+        Returns:
+            QuerySet: Filtered queryset containing only published posts
+        """
         return super().get_queryset().filter(status=Post.Status.PUBLISHED)
 
 
-# When you inherit from models.Model, Django knows that Post is a model,
-# and treats it with its ORM-logic.
 class Post(models.Model):
+    """
+    Blog post model representing articles in the blog application.
+
+    This model stores all information related to blog posts including title, content,
+    author information, publication status, and timestamps. It includes functionality
+    for tagging posts and retrieving absolute URLs.
+    """
 
     class Status(models.TextChoices):
+        """
+        Enumeration of possible post statuses.
+
+        Attributes:
+            DRAFT: Represents a draft post not yet published
+            PUBLISHED: Represents a published post visible to users
+        """
+
         DRAFT = "DF", "Draft"
         PUBLISHED = "PB", "Published"
 
@@ -43,9 +68,24 @@ class Post(models.Model):
         ]
 
     def __str__(self):
+        """
+        String representation of the Post object.
+
+        Returns:
+            str: The post title
+        """
         return self.title
 
     def get_absolute_url(self):
+        """
+        Get the absolute URL for the post detail view.
+
+        This method constructs the URL for accessing the post detail page
+        using the post's publication date and slug.
+
+        Returns:
+            str: URL to access this specific post
+        """
         return reverse(
             "blog:post_detail",
             args=[self.publish.year, self.publish.month, self.publish.day, self.slug],
@@ -53,6 +93,13 @@ class Post(models.Model):
 
 
 class Comment(models.Model):
+    """
+    Comment model for blog posts.
+
+    This model represents user comments on blog posts, including the commenter's
+    information, comment content, timestamps, and moderation status.
+    """
+
     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="comments")
     name = models.CharField(max_length=80)
     email = models.EmailField()
@@ -68,4 +115,10 @@ class Comment(models.Model):
         ]
 
     def __str__(self):
+        """
+        String representation of the Comment object.
+
+        Returns:
+            str: A string indicating the comment author and the post it belongs to
+        """
         return f"Comment by {self.name} on {self.post}"
