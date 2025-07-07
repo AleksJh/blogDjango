@@ -1,6 +1,6 @@
 # BlogDjango
 
-Blog application from Antonio Melé's book *Django 4 By Example*.
+Blog application from Antonio Melé's book *Django 4 By Example*. This project is a full-featured blog web application built with Django 4.x, adhering to the MTV (Model-Template-View) architectural pattern. It uses Python as the backend language and supports PostgreSQL for robust data management, including advanced full-text search capabilities. Core functionalities include comprehensive data modeling for posts, an auto-generated Django Admin site, and both function-based and Class-Based Views for content display. The application features pagination, SEO-friendly canonical URLs, and a custom template system with unique tags and filters for Markdown rendering. A commenting system is integrated using Django Forms, alongside a flexible tagging functionality for posts. Crucially, it implements full-text search powered by PostgreSQL, leveraging SearchVector, SearchRank, and TrigramSimilarity for advanced query processing and relevance scoring. Additional features like email recommendations, Sitemaps, and RSS/Atom Feeds enhance the user experience. 
 
 ## Requirements
 
